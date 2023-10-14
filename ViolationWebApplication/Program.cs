@@ -19,7 +19,6 @@ builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(connectio
 
 var app = builder.Build();
 
-app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -35,6 +34,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
