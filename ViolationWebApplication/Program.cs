@@ -1,20 +1,25 @@
 using Microsoft.EntityFrameworkCore;
 using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.Repository;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 string connection = builder.Configuration.GetConnectionString("PostgreSql");
 builder.Services.AddTransient<IViolationRepository, ViolationRepository>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<IOwnerRepository, OwnerRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(connection));
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -29,6 +34,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

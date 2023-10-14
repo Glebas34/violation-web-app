@@ -5,11 +5,7 @@
 }
 @using ViolationWebApplication.ViewModels
 @model ViewModelOwner
-<form asp-action="Add" asp-controller="Owner" method="post">
-    <div class="form-group">
-        <label asp-for="DriversLicense">Номер водительских прав</label>
-        <input asp-for="DriversLicense" class="form-control" placeholder="Введите номер водительских прав">
-    </div>
+<form asp-action="AddOwner" asp-controller="Violation" method="post">
     <div class="form-group">
         <label asp-for="LastName">Фамилия</label>
         <input asp-for="LastName" class="form-control" placeholder="Введите фамилию">

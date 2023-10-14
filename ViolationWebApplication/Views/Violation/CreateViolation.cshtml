@@ -5,7 +5,7 @@
 }
 @using ViolationWebApplication.ViewModels
 @model ViewModelViolation
-<form asp-action="Add" asp-controller="Violation" method="post">
+<form asp-action="AddViolation" asp-controller="Violation" method="post">
     <div class="form-group">
         <label asp-for="TypeOfViolation">Тип нарушения</label>
         <input asp-for="TypeOfViolation" class="form-control" placeholder="Введите тип нарушения">

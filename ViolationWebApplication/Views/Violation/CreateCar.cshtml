@@ -5,11 +5,7 @@
 }
 @using ViolationWebApplication.ViewModels
 @model ViewModelCar
-<form asp-action="Add" asp-controller="Car" method="post">
-    <div class="form-group">
-        <label asp-for="CarNumber">Номер машины</label>
-        <input asp-for="CarNumber" class="form-control" placeholder="Введите номер машины">
-    </div>
+<form asp-action="AddCar" asp-controller="Violation" method="post">
     <div class="form-group">
         <label asp-for="Manufacturer">Производитель</label>
         <input asp-for="Manufacturer" class="form-control" placeholder="Введите производителя">
