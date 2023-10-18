@@ -5,7 +5,6 @@ using ViolationWebApplication.ViewModels;
 
 namespace ViolationWebApplication.Controllers
 {
-    [Route("Violation")]
     public class ViolationController : Controller
     {
         public const string SessionKeyCarNumber = "_CarNumber";
@@ -18,12 +17,12 @@ namespace ViolationWebApplication.Controllers
             _httpContextAccessor = httpContextAccessor;
             _session = _httpContextAccessor.HttpContext.Session;
         }
-        [Route("CreateViolation")]
-        public IActionResult CreateViolation()
+        [HttpGet]
+        public IActionResult AddViolation()
         {
             return View();
         }
-        [Route("AddViolation")]
+        [HttpPost]
         public async Task<IActionResult> AddViolation(ViewModelViolation model) {
             Car? car = await _unitOfWork.CarRepository.GetByNumber(model.CarNumber);
             Violation violation = new Violation();
@@ -45,9 +44,9 @@ namespace ViolationWebApplication.Controllers
             _unitOfWork.Complete();
             await _unitOfWork.ViolationRepository.Add(violation);
             _unitOfWork.Complete();
-            return View("CreateCar");
+            return View("AddCar");
         }
-        [Route("AddCar")]
+        [HttpPost]
         public async Task<IActionResult> AddCar(ViewModelCar CarModel)
         {
             Owner? owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(CarModel.DriversLicense);
@@ -72,9 +71,9 @@ namespace ViolationWebApplication.Controllers
             _unitOfWork.Complete();
             _unitOfWork.CarRepository.Update(car);
             _unitOfWork.Complete();
-            return View("CreateOwner");
+            return View("AddOwner");
         }
-        [Route("AddOwner")]
+        [HttpPost]
         public async Task<IActionResult> AddOwner(ViewModelOwner model)
         {
             Owner owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(_session.GetString(SessionKeyDriversLicense));
