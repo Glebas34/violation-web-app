@@ -13,5 +13,6 @@ namespace ViolationWebApplication.Models
         [ForeignKey(nameof(Owner))]
         public int? OwnerId { get; set; }
         public Owner? Owner { get; set; }
+        public ICollection<Violation> Violations;
     }
 }
