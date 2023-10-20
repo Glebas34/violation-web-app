@@ -1,6 +1,4 @@
-﻿using AspNetCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using ViolationWebApplication.Interfaces;
+﻿using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.Models;
 
 namespace ViolationWebApplication.Service
