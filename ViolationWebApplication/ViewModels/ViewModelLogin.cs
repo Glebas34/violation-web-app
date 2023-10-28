@@ -7,6 +7,7 @@ namespace ViolationWebApplication.ViewModels
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Введите Email")]
         public string Email { get; set; }
+
         [Display(Name = "Пароль")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Введите пароль")]

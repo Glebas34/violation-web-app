@@ -73,19 +73,21 @@ namespace ViolationWebApplication.Controllers
             if (owner == null)
             {
                 var newOwner = new Owner { FirstName = model.FirstName, LastName = model.LastName, Patronymic = model.Patronymic, DriversLicense = model.DriversLicense};
-                await _unitOfWork.OwnerRepository.Add(newOwner);
+                owner = newOwner;
                 ownerId = newOwner.Id;
-                _unitOfWork.Complete();
             }
             else
             {
                 ownerId = owner.Id;
             }
-            var newUser = new AppUser { UserName = model.FirstName + " " + model.LastName, Email = model.Email, OwnerId = ownerId, EmailConfirmed = true };
+            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = ownerId};
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
             if (newUserResponse.Succeeded) 
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                await _unitOfWork.OwnerRepository.Add(owner);
+                _unitOfWork.Complete();
+                await _signInManager.SignInAsync(newUser, isPersistent: false);
             }
             return RedirectToAction("Index","Home");
         }
