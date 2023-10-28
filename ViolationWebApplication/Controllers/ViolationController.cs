@@ -2,6 +2,7 @@
 using ViolationWebApplication.Models;
 using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ViolationWebApplication.Controllers
 {
@@ -17,6 +18,7 @@ namespace ViolationWebApplication.Controllers
             _httpContextAccessor = httpContextAccessor;
             _session = _httpContextAccessor.HttpContext.Session;
         }
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddViolation()
         {
