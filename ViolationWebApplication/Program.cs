@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.Repository;
 using Microsoft.AspNetCore.Http;
+using ViolationWebApplication.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using ViolationWebApplication.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 string connection = builder.Configuration.GetConnectionString("PostgreSql");
 builder.Services.AddTransient<IViolationRepository, ViolationRepository>();
@@ -16,9 +21,15 @@ builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<IOwnerRepository, OwnerRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(connection));
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 var app = builder.Build();
-
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
+{
+    await Seed.SeedUsersAndRolesAsync(app);
+    Seed.SeedData(app);
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -29,7 +40,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();

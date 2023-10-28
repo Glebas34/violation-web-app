@@ -9,14 +9,17 @@
     <div class="form-group">
         <label asp-for="TypeOfViolation">Тип нарушения</label>
         <input asp-for="TypeOfViolation" class="form-control" placeholder="Введите тип нарушения">
+        <span asp-validation-for="TypeOfViolation" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="FineFee">Размер штрафа</label>
         <input asp-for="FineFee" class="form-control" placeholder="Введите размер штрафа">
+        <span asp-validation-for="FineFee" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="CarNumber">Номер автомобиля</label>
         <input asp-for="CarNumber" class="form-control" placeholder="Введите номер автомобиля">
+        <span asp-validation-for="CarNumber" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

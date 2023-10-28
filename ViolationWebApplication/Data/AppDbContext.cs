@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using ViolationWebApplication.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace ViolationWebApplication.Repository;
+namespace ViolationWebApplication.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<AppUser>
 {
 
     public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -19,5 +20,5 @@ public class AppDbContext : DbContext
 
     public DbSet<Violation> Violations { get; set; }
 
-    
+
 }
