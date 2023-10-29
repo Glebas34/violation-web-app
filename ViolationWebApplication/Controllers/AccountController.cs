@@ -69,18 +69,12 @@ namespace ViolationWebApplication.Controllers
                 return View(model);
             }
             var owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(model.DriversLicense);
-            int ownerId;
             if (owner == null)
             {
                 var newOwner = new Owner { FirstName = model.FirstName, LastName = model.LastName, Patronymic = model.Patronymic, DriversLicense = model.DriversLicense};
                 owner = newOwner;
-                ownerId = newOwner.Id;
             }
-            else
-            {
-                ownerId = owner.Id;
-            }
-            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = ownerId};
+            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
             if (newUserResponse.Succeeded) 
             {

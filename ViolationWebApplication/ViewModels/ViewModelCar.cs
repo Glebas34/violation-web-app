@@ -9,7 +9,7 @@ namespace ViolationWebApplication.ViewModels
         [Required(ErrorMessage = "Укажите модель машины")]
         public string Model { get; set; }
 
-        [RegularExpression(@"[0-9]{10}")]
+        [RegularExpression(@"[0-9]{10}",ErrorMessage = "Номер водительских прав состоит из 10 цифр")]
         [Required(ErrorMessage ="Укажите номер водительских прав")]
         public string DriversLicense { get; set; }
     }
