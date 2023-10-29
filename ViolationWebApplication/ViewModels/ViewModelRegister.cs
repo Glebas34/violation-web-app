@@ -16,6 +16,7 @@ namespace ViolationWebApplication.ViewModels
         public string Patronymic { get; set; }
 
         [Display(Name = "Имя пользователь")]
+        [RegularExpression(@"[a-zA-Z0-9_]{32}",ErrorMessage = "Имя пользователя состоит из латинских букв, цифр и символа _")]
         [Required(ErrorMessage = "Введите имя пользователья")]
         public string UserName { get; set; }
 
