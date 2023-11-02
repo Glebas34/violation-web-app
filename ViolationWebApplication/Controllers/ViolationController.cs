@@ -66,7 +66,6 @@ namespace ViolationWebApplication.Controllers
                     car.OwnerId = owner.Id;
                     car.Owner = owner;
                     _unitOfWork.ViolationRepository.Add(violation);
-                    //_unitOfWork.Complete();
                     _unitOfWork.CarRepository.Add(car);
                     _unitOfWork.Complete();
                     return RedirectToAction("Index", "Home");
@@ -93,9 +92,7 @@ namespace ViolationWebApplication.Controllers
                 owner.FirstName = model.FirstName;
                 owner.Patronymic = model.Patronymic;
                 _unitOfWork.ViolationRepository.Add(violation);
-                //_unitOfWork.Complete();
                 _unitOfWork.CarRepository.Add(car);
-                //_unitOfWork.Complete();
                 _unitOfWork.OwnerRepository.Add(owner);
                 _unitOfWork.Complete();
                 return RedirectToAction("Index", "Home");
