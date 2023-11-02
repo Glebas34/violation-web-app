@@ -21,7 +21,7 @@ namespace ViolationWebApplication.ViewModels
         public string UserName { get; set; }
 
         [Display(Name = "Номер водительских прав")]
-        [RegularExpression(@"[0-9]{10}")]
+        [RegularExpression(@"[0-9]{10}", ErrorMessage = "Номер водительских прав состоит из 10 цифр")]
         [Required(ErrorMessage = "Введите номер водительских прав")]
         public string DriversLicense { get; set; }
 
