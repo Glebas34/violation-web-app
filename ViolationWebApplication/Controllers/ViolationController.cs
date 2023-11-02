@@ -65,8 +65,8 @@ namespace ViolationWebApplication.Controllers
                     Violation violation = _session.Get<Violation>(SessionKeyViolation);
                     car.OwnerId = owner.Id;
                     car.Owner = owner;
-                    _unitOfWork.ViolationRepository.Add(violation);
-                    _unitOfWork.CarRepository.Add(car);
+                    await _unitOfWork.ViolationRepository.Add(violation);
+                    await _unitOfWork.CarRepository.Add(car);
                     _unitOfWork.Complete();
                     return RedirectToAction("Index", "Home");
                 }
@@ -91,9 +91,9 @@ namespace ViolationWebApplication.Controllers
                 owner.LastName = model.LastName;
                 owner.FirstName = model.FirstName;
                 owner.Patronymic = model.Patronymic;
-                _unitOfWork.ViolationRepository.Add(violation);
-                _unitOfWork.CarRepository.Add(car);
-                _unitOfWork.OwnerRepository.Add(owner);
+                await _unitOfWork.ViolationRepository.Add(violation);
+                await _unitOfWork.CarRepository.Add(car);
+                await _unitOfWork.OwnerRepository.Add(owner);
                 _unitOfWork.Complete();
                 return RedirectToAction("Index", "Home");
             }
