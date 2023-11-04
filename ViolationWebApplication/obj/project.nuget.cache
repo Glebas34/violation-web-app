@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WDJuAmT0PeCKnfJAQiEq/LT48ouuV7IiLlpWaeGHly5iKMGA4dLwELiSLnspRg7exjSURxffzfHHBc+1q8mBzg==",
+  "dgSpecHash": "v73es7AJQC3heiHSmkgdaSPIk1ip8JoHU+Juu4pI8HcNyhsVhFzp94G16uY0AjbyD6NfYxApqiOnPAr/JaN6NA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\ViolationWebApplication.csproj",
+  "projectFilePath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kuimo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.13\\microsoft.aspnetcore.cryptography.internal.7.0.13.nupkg.sha512",

@@ -21,6 +21,8 @@
         <input asp-for="Patronymic" class="form-control" placeholder="Введите отчество">
         <span asp-validation-for="Patronymic" class="text-danger"></span>
     </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Отменить</a>
+    </div>
 </form>

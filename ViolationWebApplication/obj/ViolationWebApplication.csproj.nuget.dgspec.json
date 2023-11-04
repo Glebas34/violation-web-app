@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\ViolationWebApplication.csproj": {
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
         "projectName": "ViolationWebApplication",
-        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
         "packagesPath": "C:\\Users\\kuimo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApplication\\ViolationWebApplication\\obj\\",
+        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kuimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
