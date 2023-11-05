@@ -17,7 +17,7 @@ namespace ViolationWebApplication.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -218,6 +218,8 @@ namespace ViolationWebApplication.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
+                    b.HasIndex("OwnerId");
+
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
@@ -295,9 +297,8 @@ namespace ViolationWebApplication.Migrations
                     b.Property<bool>("IsPaid")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("TypeOfViolation")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("TypeOfViolation")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -355,6 +356,15 @@ namespace ViolationWebApplication.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ViolationWebApplication.Models.AppUser", b =>
+                {
+                    b.HasOne("ViolationWebApplication.Models.Owner", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("ViolationWebApplication.Models.Car", b =>

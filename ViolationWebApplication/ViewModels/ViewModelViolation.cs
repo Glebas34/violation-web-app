@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ViolationWebApplication.Data;
 
 namespace ViolationWebApplication.ViewModels
 {
     public class ViewModelViolation
     {
-        [Required(ErrorMessage = "Введите тип нарушения")]
-        public string TypeOfViolation {  get; set; }
+        [Required(ErrorMessage = "Выберите тип нарушения")]
+        public ViolationType TypeOfViolation {  get; set; }
 
         [Required(ErrorMessage = "Введите сумму штрафа")]
         public int FineFee {  get; set; }

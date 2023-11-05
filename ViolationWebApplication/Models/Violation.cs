@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ViolationWebApplication.Data;
 
 namespace ViolationWebApplication.Models
 {
@@ -7,7 +8,7 @@ namespace ViolationWebApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        public string TypeOfViolation { get; set; }
+        public ViolationType TypeOfViolation { get; set; }
         public int FineFee { get; set; }
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
         public bool IsPaid { get; set; }=false;
