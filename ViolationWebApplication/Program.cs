@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.Repository;
-using Microsoft.AspNetCore.Http;
 using ViolationWebApplication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,12 +14,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
-string connection = builder.Configuration.GetConnectionString("PostgreSql");
 builder.Services.AddTransient<IViolationRepository, ViolationRepository>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<IOwnerRepository, OwnerRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(connection));
+builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
@@ -40,9 +38,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.UseSession();

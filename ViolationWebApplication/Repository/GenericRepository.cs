@@ -14,10 +14,12 @@ namespace ViolationWebApplication.Repository
     {
         private AppDbContext _context;
         protected DbSet<T> _dbSet;
+
         public GenericRepository(AppDbContext context) {
             _context = context;
             _dbSet=context.Set<T>();
         }
+
         public async Task Add(T entity)
         {
             await _dbSet.AddAsync(entity);
