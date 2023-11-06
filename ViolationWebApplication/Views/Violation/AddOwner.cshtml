@@ -1,10 +1,10 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@using ViolationWebApplication.ViewModels
+﻿@using ViolationWebApplication.ViewModels
 @model ViewModelOwner
+
+@{
+    ViewData["Tittle"] = "Добавление владельца";
+}
+
 <form asp-action="AddOwner" asp-controller="Violation" method="post">
     <div class="form-group">
         <label asp-for="LastName">Фамилия</label>

@@ -14,17 +14,20 @@ namespace ViolationWebApplication.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IUnitOfWork _unitOfWork;
+
        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _unitOfWork = unitOfWork;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(ViewModelLogin model)
         {
@@ -32,7 +35,9 @@ namespace ViolationWebApplication.Controllers
             {
                 return View(model);
             }
+
             var user = await _userManager.FindByEmailAsync(model.Email);
+
             if (user != null)
             { 
              var passwordCheck = await _userManager.CheckPasswordAsync(user, model.Password);
@@ -50,11 +55,13 @@ namespace ViolationWebApplication.Controllers
             TempData["Error"] = "Неверные реквизиты. Попробуйте снова.";
             return View(model);
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(ViewModelRegister model)
         {
@@ -85,6 +92,7 @@ namespace ViolationWebApplication.Controllers
             }
             return RedirectToAction("Index","Home");
         }
+
         [HttpGet]
          public async Task<IActionResult> Logout()
         {

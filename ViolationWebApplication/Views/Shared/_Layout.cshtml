@@ -2,9 +2,11 @@
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+
 @{
     var user = await UserManager.GetUserAsync(User);
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

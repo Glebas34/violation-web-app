@@ -11,6 +11,7 @@ public class Seed
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
             context.Database.EnsureCreated();
+
             if (context.Owners.Any())
             {
                 context.Owners.Add(new Owner { FirstName = "Иван", LastName = "Иванов", Patronymic = "Петрович", DriversLicense = "2281337322" });
@@ -46,9 +47,10 @@ public class Seed
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
                 await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
             }
-             adminUserEmail = "pochta4e6ypeka@gmail.com";
 
-             adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+            adminUserEmail = "pochta4e6ypeka@gmail.com";
+
+            adminUser = await userManager.FindByEmailAsync(adminUserEmail);
             if (adminUser == null)
             {
                 var newAdminUser = new AppUser()
@@ -60,7 +62,9 @@ public class Seed
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
                 await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
             }
+
             string userEmail = "pochta2023@gmail.com";
+
             var user = await userManager.FindByEmailAsync(userEmail);
             if (user == null)
             {
