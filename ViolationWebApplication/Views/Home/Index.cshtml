@@ -1,5 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ViolationWebApplication.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 @{
     ViewData["Title"] = "Home Page";
@@ -8,5 +16,11 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        <a asp-action = "AddViolation" asp-controller = "Violation">Добавить нарушение</a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
+        {
+            <a asp-action = "AddViolation" asp-controller = "Violation">Добавить нарушение</a>
+        }
+    }
 </div>
