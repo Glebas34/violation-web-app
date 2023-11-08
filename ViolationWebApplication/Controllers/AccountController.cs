@@ -75,18 +75,24 @@ namespace ViolationWebApplication.Controllers
                 TempData["Error"] = "Email занят.";
                 return View(model);
             }
+            user = await _userManager.FindByNameAsync(model.UserName);
+            if (user != null)
+            {
+                TempData["Error"] = "Имя пользователя занято.";
+                return View(model);
+            }
             var owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(model.DriversLicense);
             if (owner == null)
             {
                 var newOwner = new Owner { FirstName = model.FirstName, LastName = model.LastName, Patronymic = model.Patronymic, DriversLicense = model.DriversLicense};
                 owner = newOwner;
+                await _unitOfWork.OwnerRepository.Add(owner);
             }
-            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
+            var newUser = new AppUser {UserName=model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
             if (newUserResponse.Succeeded) 
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-                await _unitOfWork.OwnerRepository.Add(owner);
                 _unitOfWork.Complete();
                 await _signInManager.SignInAsync(newUser, isPersistent: false);
             }
