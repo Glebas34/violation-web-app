@@ -88,7 +88,7 @@ namespace ViolationWebApplication.Controllers
                 owner = newOwner;
                 await _unitOfWork.OwnerRepository.Add(owner);
             }
-            var newUser = new AppUser {UserName=model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
+            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
             if (newUserResponse.Succeeded) 
             {

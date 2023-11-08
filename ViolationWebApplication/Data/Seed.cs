@@ -12,7 +12,7 @@ public class Seed
 
             context.Database.EnsureCreated();
 
-            if (context.Owners.Any())
+            if (!context.Owners.Any())
             {
                 context.Owners.Add(new Owner { FirstName = "Иван", LastName = "Иванов", Patronymic = "Петрович", DriversLicense = "2281337322" });
                 context.SaveChanges();
@@ -25,6 +25,7 @@ public class Seed
         {
             //Roles
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
             if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
@@ -40,7 +41,7 @@ public class Seed
             {
                 var newAdminUser = new AppUser()
                 {
-                    UserName = "Glebas34",
+                    NormalizedUserName = "Glebas34",
                     Email = adminUserEmail,
                     EmailConfirmed = true
                 };
@@ -55,7 +56,7 @@ public class Seed
             {
                 var newAdminUser = new AppUser()
                 {
-                    UserName = "4e6ypek",
+                    NormalizedUserName = "4e6ypek",
                     Email = adminUserEmail,
                     EmailConfirmed = true
                 };
@@ -73,7 +74,8 @@ public class Seed
                     UserName = "userochek",
                     Email = userEmail,
                     EmailConfirmed = true,
-                    OwnerId = 1
+                    OwnerId = 1,
+                    Owner = context.Owners.Find(1)
                 };
                 await userManager.CreateAsync(newUser, "Coding@1234?");
                 await userManager.AddToRoleAsync(newUser, UserRoles.User);

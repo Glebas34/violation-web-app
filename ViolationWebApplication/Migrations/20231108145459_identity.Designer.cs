@@ -12,8 +12,8 @@ using ViolationWebApplication.Data;
 namespace ViolationWebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231105091352_init")]
-    partial class init
+    [Migration("20231108145459_identity")]
+    partial class identity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

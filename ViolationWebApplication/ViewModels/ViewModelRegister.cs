@@ -16,29 +16,30 @@ namespace ViolationWebApplication.ViewModels
         public string Patronymic { get; set; }
 
         [Display(Name = "Имя пользователь")]
-        [RegularExpression(@"[a-zA-Z0-9_]{32}",ErrorMessage = "Имя пользователя состоит из латинских букв, цифр и символа _")]
         [Required(ErrorMessage = "Введите имя пользователья")]
+        [RegularExpression(@"[a-zA-Z0-9_-]+", ErrorMessage = "Имя пользователя может содержать символы _, -, цифры и латинские буквы")]
+        [MaxLength(20, ErrorMessage = "Имя пользователя может содержать не более 20 символов")]
         public string UserName { get; set; }
 
         [Display(Name = "Номер водительских прав")]
-        [RegularExpression(@"[0-9]{10}", ErrorMessage = "Номер водительских прав состоит из 10 цифр")]
         [Required(ErrorMessage = "Введите номер водительских прав")]
+        [RegularExpression(@"[0-9]{10}", ErrorMessage = "Номер водительских прав состоит из 10 цифр")]
         public string DriversLicense { get; set; }
 
         [Display(Name = "Email адрес")]
-        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Введите Email адрес")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Пароль")]
-        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Введите Пароль")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "Подверждение Пароля")]
+        [Required(ErrorMessage = "Подтвердите Пароль")]
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage = "Несовпадение паролей")]
-        [Required(ErrorMessage = "Подтвердите Пароль")]
         public string ConfirmPassword { get; set; }
 
     }
