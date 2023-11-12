@@ -9,7 +9,16 @@
 }
 
 <h2>User Violations</h2>
-
+@if ((await UserManager.GetRolesAsync(user)).Contains("user"))
+{
+    await context.Entry(user).Reference(u => u.Owner).LoadAsync();
+    var owner = user.Owner;
+    await UnitOfWork.OwnerRepository.ExplicitLoadingCollection(owner, "Cars");
+    ICollection<Car>? cars = owner.Cars;
+    violations = violations.Where(v => cars.Contains(v.Car)).ToList();
+}
+@if (violations.Count > 0)
+{
     <table>
         <thead>
             <tr>
@@ -20,16 +29,8 @@
             </tr>
         </thead>
         <tbody>
-            @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
-            {
-                await context.Entry(user).Reference(u => u.Owner).LoadAsync();
-                var owner = user.Owner;
-                await UnitOfWork.OwnerRepository.ExplicitLoadingCollection(owner, "Cars");
-                ICollection<Car>? cars = owner.Cars;
-                violations = violations.Where(v=>cars.Contains(v.Car)).ToList();
-            }
 
-                @foreach (var violation in violations)
+            @foreach (var violation in violations)
             {
                 var car = violation.Car;
                 string carName = $"{car.Manufacturer} {car.Model}";
@@ -43,3 +44,8 @@
             }
         </tbody>
     </table>
+}
+else
+{
+    <p>Нарушения отсутствуют</p>
+}
