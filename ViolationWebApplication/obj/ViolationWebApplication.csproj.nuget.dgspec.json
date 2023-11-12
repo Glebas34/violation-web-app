@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
+    "C:\\Users\\ekras\\Desktop\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {
+    "C:\\Users\\ekras\\Desktop\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\ekras\\Desktop\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
         "projectName": "ViolationWebApplication",
-        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
-        "packagesPath": "C:\\Users\\kuimo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\obj\\",
+        "projectPath": "C:\\Users\\ekras\\Desktop\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "packagesPath": "C:\\Users\\ekras\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ekras\\Desktop\\ViolationWebApp\\ViolationWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kuimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ekras\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

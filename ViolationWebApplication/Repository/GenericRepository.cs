@@ -31,7 +31,7 @@ namespace ViolationWebApplication.Repository
             _dbSet.Remove(entity);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IList<T>> GetAll()
         {
             return await _dbSet.ToListAsync();
         }

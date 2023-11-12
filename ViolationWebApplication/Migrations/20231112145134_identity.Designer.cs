@@ -12,7 +12,7 @@ using ViolationWebApplication.Data;
 namespace ViolationWebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231108145459_identity")]
+    [Migration("20231112145134_identity")]
     partial class identity
     {
         /// <inheritdoc />

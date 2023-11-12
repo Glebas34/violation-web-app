@@ -117,5 +117,11 @@ namespace ViolationWebApplication.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ShowAllViolations()
+        {
+            return View();
+        }
     }
 }

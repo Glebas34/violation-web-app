@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject ViolationWebApplication.Interfaces.IUnitOfWork UnitOfWork
+@inject UserManager<AppUser> UserManager
+@inject ViolationWebApplication.Data.AppDbContext context
+<h2>User Violations</h2>
+@{
+    var violations = await UnitOfWork.ViolationRepository.GetAll();
+    var user = await UserManager.GetUserAsync(User);
+    await context.Entry(user).Reference(u => u.Owner).LoadAsync();
+    UnitOfWork.ViolationRepository.ExplicitLoadingCollection(violations, "Car");
+    var owner = user.Owner;
+    //  await UnitOfWork.OwnerRepository.Get(user.OwnerId)
+    // await UserManager.Users.Include(u => u.Owner).FirstOrDefault(u => u.Email == (await UserManager.GetUserAsync(User)).Email)
+    UnitOfWork.OwnerRepository.ExplicitLoading(owner, "Cars");
+    List<Car> cars = owner.Cars.ToList();
+}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Машина</th>
+            <th>Нарушение</th>
+            <th>Время</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var violation in violations.Where(p => cars.Contains(p.Car)))
+        {
+            <tr>
+                <td>@violation.Id</td>
+                <td>@violation.Car</td>
+                <td>@violation.TypeOfViolation</td>
+                <td>@violation.DateTime</td>
+            </tr>
+        }
+    </tbody>
+</table>

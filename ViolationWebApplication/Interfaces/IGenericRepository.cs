@@ -9,7 +9,7 @@ namespace ViolationWebApplication.Interfaces
    public interface IGenericRepository<T> where T : class
     {
         Task<T> Get(int? id);
-        Task<IEnumerable<T>> GetAll();
+        Task<IList<T>> GetAll();
         Task Add(T entity);
         Task Delete(int id);
         void DeleteRange(IEnumerable<T> entities);
