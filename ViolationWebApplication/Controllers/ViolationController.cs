@@ -48,7 +48,6 @@ namespace ViolationWebApplication.Controllers
                 car = new Car();
 
                 car.CarNumber = model.CarNumber;
-                violation.Car = car;
 
                 _session.Set(SessionKeyCar, car);
                 _session.Set(SessionKeyViolation, violation);
@@ -74,6 +73,7 @@ namespace ViolationWebApplication.Controllers
                     Violation violation = _session.Get<Violation>(SessionKeyViolation);
                     car.OwnerId = owner.Id;
                     car.Owner = owner;
+                    violation.Car = car;
 
                     await _unitOfWork.ViolationRepository.Add(violation);
                     await _unitOfWork.CarRepository.Add(car);
@@ -85,7 +85,6 @@ namespace ViolationWebApplication.Controllers
 
                 owner.DriversLicense = CarModel.DriversLicense;
                 car.OwnerId = owner.Id;
-                car.Owner = owner;
 
                 _session.Set(SessionKeyCar, car);
                 _session.Set(SessionKeyOwner, owner);
@@ -107,6 +106,8 @@ namespace ViolationWebApplication.Controllers
                 owner.LastName = model.LastName;
                 owner.FirstName = model.FirstName;
                 owner.Patronymic = model.Patronymic;
+                car.Owner = owner;
+                violation.Car = car;
 
                 await _unitOfWork.ViolationRepository.Add(violation);
                 await _unitOfWork.CarRepository.Add(car);

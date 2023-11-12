@@ -2,36 +2,44 @@
 @inject ViolationWebApplication.Interfaces.IUnitOfWork UnitOfWork
 @inject UserManager<AppUser> UserManager
 @inject ViolationWebApplication.Data.AppDbContext context
-<h2>User Violations</h2>
 @{
-    var violations = await UnitOfWork.ViolationRepository.GetAll();
+    var violations = (await UnitOfWork.ViolationRepository.GetAll()).ToList();
+    await UnitOfWork.ViolationRepository.ExplicitLoadingRange(violations, "Car");
     var user = await UserManager.GetUserAsync(User);
-    await context.Entry(user).Reference(u => u.Owner).LoadAsync();
-    UnitOfWork.ViolationRepository.ExplicitLoadingCollection(violations, "Car");
-    var owner = user.Owner;
-    //  await UnitOfWork.OwnerRepository.Get(user.OwnerId)
-    // await UserManager.Users.Include(u => u.Owner).FirstOrDefault(u => u.Email == (await UserManager.GetUserAsync(User)).Email)
-    UnitOfWork.OwnerRepository.ExplicitLoading(owner, "Cars");
-    List<Car> cars = owner.Cars.ToList();
 }
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Машина</th>
-            <th>Нарушение</th>
-            <th>Время</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var violation in violations.Where(p => cars.Contains(p.Car)))
-        {
+
+<h2>User Violations</h2>
+
+    <table>
+        <thead>
             <tr>
-                <td>@violation.Id</td>
-                <td>@violation.Car</td>
-                <td>@violation.TypeOfViolation</td>
-                <td>@violation.DateTime</td>
+                <th>ID</th>
+                <th>Машина</th>
+                <th>Нарушение</th>
+                <th>Время</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
+            {
+                await context.Entry(user).Reference(u => u.Owner).LoadAsync();
+                var owner = user.Owner;
+                await UnitOfWork.OwnerRepository.ExplicitLoadingCollection(owner, "Cars");
+                ICollection<Car>? cars = owner.Cars;
+                violations = violations.Where(v=>cars.Contains(v.Car)).ToList();
+            }
+
+                @foreach (var violation in violations)
+            {
+                var car = violation.Car;
+                string carName = $"{car.Manufacturer} {car.Model}";
+
+                <tr>
+                    <td>@violation.Id</td>
+                    <td>@carName</td>
+                    <td>@violation.TypeOfViolation</td>
+                    <td>@violation.DateTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>

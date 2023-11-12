@@ -58,7 +58,12 @@ namespace ViolationWebApplication.Repository
             await _context.Entry(entity).Reference(property).LoadAsync();
         }
 
-        public async Task ExplicitLoadingCollection(IEnumerable<T> entities, string property)
+        public async Task ExplicitLoadingCollection(T entity, string property)
+        {
+            await _context.Entry(entity).Collection(property).LoadAsync();
+        }
+
+        public async Task ExplicitLoadingRange(IEnumerable<T> entities, string property)
         {
             foreach(var entity in entities) {
                 await _context.Entry(entity).Reference(property).LoadAsync(); 

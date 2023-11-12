@@ -15,6 +15,7 @@ namespace ViolationWebApplication.Interfaces
         void DeleteRange(IEnumerable<T> entities);
         void Update(T entity);
         Task ExplicitLoading(T entity,string property);
-        Task ExplicitLoadingCollection(IEnumerable<T> entity,string property);
+        Task ExplicitLoadingCollection(T entity,string property);
+        Task ExplicitLoadingRange(IEnumerable<T> entities, string property);
     }
 }
