@@ -14,10 +14,12 @@ namespace ViolationWebApplication.Controllers
         public const string SessionKeyViolation = "_Violation";
         private IUnitOfWork _unitOfWork { get; set; }
         private ISession _session { get; set; }
+        private IViolationService _violationService { get; set; }
 
-        public ViolationController(IUnitOfWork unitOfWork,IHttpContextAccessor httpContextAccessor) {
+        public ViolationController(IUnitOfWork unitOfWork,IHttpContextAccessor httpContextAccessor, IViolationService violationService) {
             _unitOfWork = unitOfWork;
             _session = httpContextAccessor.HttpContext.Session;
+            _violationService = violationService;
         }
 
         [Authorize(Roles = "admin")]
@@ -123,6 +125,27 @@ namespace ViolationWebApplication.Controllers
         public async Task<IActionResult> ShowAllViolations()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PayFine(int id) {
+            Violation violation = await _unitOfWork.ViolationRepository.Get(id);
+            _session.Set(SessionKeyViolation, violation);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PayFine(ViewModelCreditCard model)
+        {
+            /*
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }*/
+
+            Violation violation = _session.Get<Violation>(SessionKeyViolation);
+            await _violationService.DeleteViolation(violation);
+            return RedirectToAction("ShowAllViolations", "Violation");
         }
     }
 }

@@ -40,6 +40,11 @@
                     <td>@carName</td>
                     <td>@violation.TypeOfViolation</td>
                     <td>@violation.DateTime</td>
+                    <td>
+                        <form method="get" asp-action="PayFine" asp-controller="Violation" asp-route-id="@violation.Id">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>

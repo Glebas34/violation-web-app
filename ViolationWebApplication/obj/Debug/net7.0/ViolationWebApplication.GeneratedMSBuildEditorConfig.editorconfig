@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXEFkZFZpb2xhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/PayFine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXFBheUZpbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/ShowAllViolations.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXFNob3dBbGxWaW9sYXRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

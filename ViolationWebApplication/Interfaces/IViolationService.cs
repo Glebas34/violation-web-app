@@ -4,6 +4,6 @@ namespace ViolationWebApplication.Interfaces
 {
     public interface IViolationService
     {
-        public Task ChangeStatus(Violation violation);
+        public Task DeleteViolation(Violation violation);
     }
 }
