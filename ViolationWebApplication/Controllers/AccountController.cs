@@ -92,7 +92,7 @@ namespace ViolationWebApplication.Controllers
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
             if (newUserResponse.Succeeded) 
             {
-                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                await _userManager.AddToRoleAsync(newUser, UserRole.User);
                 _unitOfWork.Complete();
                 await _signInManager.SignInAsync(newUser, isPersistent: false);
             }

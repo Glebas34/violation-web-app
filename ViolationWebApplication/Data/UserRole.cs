@@ -1,6 +1,6 @@
 ﻿namespace ViolationWebApplication.Data
 {
-    static public class UserRoles
+    static public class UserRole
     {
         public const string Admin = "admin";
         public const string User = "user";

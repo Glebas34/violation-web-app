@@ -27,10 +27,10 @@ public class Seed
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
-            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-            if (!await roleManager.RoleExistsAsync(UserRoles.User))
-                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+            if (!await roleManager.RoleExistsAsync(UserRole.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRole.Admin));
+            if (!await roleManager.RoleExistsAsync(UserRole.User))
+                await roleManager.CreateAsync(new IdentityRole(UserRole.User));
 
             //Users
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
@@ -46,7 +46,7 @@ public class Seed
                     EmailConfirmed = true
                 };
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
-                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                await userManager.AddToRoleAsync(newAdminUser, UserRole.Admin);
             }
 
             adminUserEmail = "pochta4e6ypeka@gmail.com";
@@ -61,7 +61,7 @@ public class Seed
                     EmailConfirmed = true
                 };
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
-                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                await userManager.AddToRoleAsync(newAdminUser, UserRole.Admin);
             }
 
             string userEmail = "pochta2023@gmail.com";
@@ -78,7 +78,7 @@ public class Seed
                     Owner = context.Owners.Find(1)
                 };
                 await userManager.CreateAsync(newUser, "Coding@1234?");
-                await userManager.AddToRoleAsync(newUser, UserRoles.User);
+                await userManager.AddToRoleAsync(newUser, UserRole.User);
             }
         }
     }
