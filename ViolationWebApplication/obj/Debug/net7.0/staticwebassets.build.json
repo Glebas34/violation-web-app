@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kuaer+dM+xdNYQLcnQSDSnGtW99ktFgHZPoTWZcX1rE=",
+  "Hash": "+9Mfbq8bqoh4VEWY8MF7jJV3vGCkrm8CPrlUNB9IPSo=",
   "Source": "ViolationWebApplication",
   "BasePath": "_content/ViolationWebApplication",
   "Mode": "Default",
@@ -933,6 +933,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\wwwroot\\lib\\jquery-masked-input\\dist\\jquery.maskedinput.js",
+      "SourceId": "ViolationWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\wwwroot\\",
+      "BasePath": "_content/ViolationWebApplication",
+      "RelativePath": "lib/jquery-masked-input/dist/jquery.maskedinput.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-masked-input\\dist\\jquery.maskedinput.js"
+    },
+    {
+      "Identity": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\wwwroot\\lib\\jquery-masked-input\\dist\\jquery.maskedinput.min.js",
+      "SourceId": "ViolationWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\wwwroot\\",
+      "BasePath": "_content/ViolationWebApplication",
+      "RelativePath": "lib/jquery-masked-input/dist/jquery.maskedinput.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-masked-input\\dist\\jquery.maskedinput.min.js"
     },
     {
       "Identity": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",

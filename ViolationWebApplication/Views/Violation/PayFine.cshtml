@@ -6,7 +6,7 @@
             <form asp-action="PayFine" asp-controller="Violation" method="post" class="card-details ">
                 <div class="form-group mb-0">
                     <p class="text-warning mb-0">Card Number</p>
-                    <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="17" id="cno" minlength="19" maxlength="19">
+                        <input type="text" name="card-number" class="form-control" placeholder="1234 5678 9012 3457" size="17" id="cno" minlength="19" maxlength="19">
                     <img src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
                 </div>
 
@@ -17,11 +17,11 @@
                     <div class="row d-flex">
                         <div class="col-sm-4">
                             <p class="text-warning mb-0">Expiration</p>
-                            <input type="text" name="exp" placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7">
+                                <input type="text" name="card-date" class="form-control" placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7">
                         </div>
                         <div class="col-sm-3">
                             <p class="text-warning mb-0">Cvv</p>
-                            <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3">
+                                <input type="password" name="card-code" class="form-control" placeholder="&#9679;&#9679;&#9679;" size="1" id="cvv" minlength="3" maxlength="3">
                         </div>
                         <div class="col-sm-5 pt-0">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-right px-3 py-2"></i></button>
@@ -33,3 +33,10 @@
     </div>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script>
+    $("input[name=card-number]").mask('9999 9999 9999 9999');
+    $("input[name=card-date]").mask('99/99');
+    $("input[name=card-code]").mask('999');
+</script>
