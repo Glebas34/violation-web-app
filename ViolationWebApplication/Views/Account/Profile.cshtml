@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<AppUser> UserManager
+@inject ViolationWebApplication.Interfaces.IUnitOfWork UnitOfWork
+
+@{
+	var user = await UserManager.GetUserAsync(User);
+	var owner = await UnitOfWork.OwnerRepository.Get(user.OwnerId);
+}
+
+<p>Имя пользователя: @user.UserName</p><br />
+<p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p><br />
+<p>Электронная почта: @user.Email</p><br />
+<p>Номер водительских прав: @owner.DriversLicense</p><br />
+
