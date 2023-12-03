@@ -9,7 +9,10 @@
 }
 
 <p>Имя пользователя: @user.UserName</p><br />
-<p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p><br />
 <p>Электронная почта: @user.Email</p><br />
-<p>Номер водительских прав: @owner.DriversLicense</p><br />
+@if ((await UserManager.GetRolesAsync(user)).Contains("user"))
+{
+	<p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p><br />
+	<p>Номер водительских прав: @owner.DriversLicense</p><br />
+}
 
