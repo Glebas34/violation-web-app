@@ -9,7 +9,7 @@
     var user = await UserManager.GetUserAsync(User);
 }
 
-<h2>User Violations</h2>
+<h2>Нарушения пользователя</h2>
 @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
 {
     await context.Entry(user).Reference(u => u.Owner).LoadAsync();

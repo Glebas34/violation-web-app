@@ -8,11 +8,52 @@
 	var owner = await UnitOfWork.OwnerRepository.Get(user.OwnerId);
 }
 
-<p>Имя пользователя: @user.UserName</p><br />
-<p>Электронная почта: @user.Email</p><br />
-@if ((await UserManager.GetRolesAsync(user)).Contains("user"))
-{
-	<p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p><br />
-	<p>Номер водительских прав: @owner.DriversLicense</p><br />
-}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .profile-container {
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .user-details {
+        margin-top: 20px;
+    }
+
+        .user-details p {
+            font-weight: normal;
+        }
+</style>
+
+<div class="profile-container">
+    <h2>Профиль</h2>
+
+    <div class="user-details">
+        <p>Имя пользователя: @user.UserName</p>
+        <p>Электронная почта: @user.Email</p>
+
+        @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
+        {
+            <p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p>
+            <p>Номер водительских прав: @owner.DriversLicense</p>
+        }
+    </div>
+</div>
 
