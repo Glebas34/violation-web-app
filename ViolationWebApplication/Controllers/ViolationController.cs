@@ -23,11 +23,12 @@ namespace ViolationWebApplication.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        [HttpGet]
         public IActionResult AddViolation()
         {
             return View();
         }
-
+        [HttpPost]
         public async Task<IActionResult> AddViolation(ViewModelViolation model) {
             if (ModelState.IsValid)
             {
@@ -121,21 +122,20 @@ namespace ViolationWebApplication.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public async Task<IActionResult> PayFine(int id) {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);
             _session.Set(SessionKeyViolation, violation);
             return View();
         }
-
+        [HttpPost]
         public async Task<IActionResult> PayFine()
         {
             Violation violation = _session.Get<Violation>(SessionKeyViolation);
             await _violationService.DeleteViolation(violation);
             return RedirectToAction("ShowAllViolations", "Violation");
         }
-
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteViolation(int id)
         {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);
             await _violationService.DeleteViolation(violation);
