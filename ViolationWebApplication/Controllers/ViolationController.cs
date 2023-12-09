@@ -147,5 +147,12 @@ namespace ViolationWebApplication.Controllers
             await _violationService.DeleteViolation(violation);
             return RedirectToAction("ShowAllViolations", "Violation");
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            Violation violation = await _unitOfWork.ViolationRepository.Get(id);
+            await _violationService.DeleteViolation(violation);
+            return RedirectToAction("ShowAllViolations", "Violation");
+        }
     }
 }

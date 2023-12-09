@@ -44,11 +44,20 @@
                     <td>@carName</td>
                     <td>@Html.DisplayTextFor(v=>violation.TypeOfViolation)</td>
                     <td>@violation.DateTime</td>
-                    <td>
-                        <form method="get" asp-action="PayFine" asp-controller="Violation" asp-route-id="@violation.Id">
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
+                    @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
+                    {
+                        <td>
+                            <form method="get" asp-action="PayFine" asp-controller="Violation" asp-route-id="@violation.Id">
+                                <button class="btn btn-success">Оплатить</button>
+                            </form>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn btn-danger" asp-action="Delete" asp-controller="Violation" asp-route-id="@violation.Id">Удалить</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
