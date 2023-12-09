@@ -23,13 +23,11 @@ namespace ViolationWebApplication.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        [HttpGet]
         public IActionResult AddViolation()
         {
             return View();
         }
 
-        [HttpPost]
         public async Task<IActionResult> AddViolation(ViewModelViolation model) {
             if (ModelState.IsValid)
             {
@@ -59,7 +57,6 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
-        [HttpPost]
         public async Task<IActionResult> AddCar(ViewModelCar CarModel)
         {
             if (ModelState.IsValid)
@@ -96,7 +93,6 @@ namespace ViolationWebApplication.Controllers
            return View(CarModel);
         }
 
-        [HttpPost]
         public async Task<IActionResult> AddOwner(ViewModelOwner model)
         {
             if (ModelState.IsValid)
@@ -121,28 +117,19 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
-        [HttpGet]
         public async Task<IActionResult> ShowAllViolations()
         {
             return View();
         }
 
-        [HttpGet]
         public async Task<IActionResult> PayFine(int id) {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);
             _session.Set(SessionKeyViolation, violation);
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PayFine(ViewModelCreditCard model)
+        public async Task<IActionResult> PayFine()
         {
-            /*
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }*/
-
             Violation violation = _session.Get<Violation>(SessionKeyViolation);
             await _violationService.DeleteViolation(violation);
             return RedirectToAction("ShowAllViolations", "Violation");
