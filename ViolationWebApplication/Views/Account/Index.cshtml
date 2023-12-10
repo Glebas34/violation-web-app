@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="~/ViolationWebApplication.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <button class="btn btn-outline-secondary" onclick="switchForm(this)">Вход</button>
-    <button class="btn btn-outline-secondary" onclick="switchForm(this)">Регистрация</button>
+    <div class="text-center">
+        <button class="btn btn-outline-secondary" onclick="switchForm(this)">Вход</button>
+        <button class="btn btn-outline-secondary" onclick="switchForm(this)">Регистрация</button>
+    </div>
     <div id="registration" style="display: none;">
         @{
             await Html.RenderPartialAsync("/Views/Account/Register.cshtml");
