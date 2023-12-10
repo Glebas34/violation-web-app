@@ -7,6 +7,7 @@ using ViolationWebApplication.Service;
 
 namespace ViolationWebApplication.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ViolationController : Controller
     {
         public const string SessionKeyCar = "_Car";
@@ -22,7 +23,6 @@ namespace ViolationWebApplication.Controllers
             _violationService = violationService;
         }
 
-        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddViolation()
         {
@@ -122,12 +122,15 @@ namespace ViolationWebApplication.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> PayFine(int id) {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);
             _session.Set(SessionKeyViolation, violation);
             return View();
         }
+
+        [Authorize(Roles = "user")]
         [HttpPost]
         public async Task<IActionResult> PayFine()
         {

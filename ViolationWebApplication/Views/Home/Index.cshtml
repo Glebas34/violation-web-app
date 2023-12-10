@@ -14,13 +14,13 @@
 <div class="text-center d-flex flex-column align-items-center justify-content-center" style="min-height: 75vh;">
     <h1 class="display-4">Учет нарушений ПДД</h1>
     <div class="mt-3">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
+
+        @if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
         {
-                <a class="btn btn-outline-secondary" asp-action="AddViolation" asp-controller="Violation">Добавить нарушение</a>
+            <a class="btn btn-outline-secondary" asp-action="AddViolation" asp-controller="Violation">Добавить нарушение</a>
         }
-            <a class="btn btn-outline-secondary" asp-action="ShowAllViolations" asp-controller="Violation">Посмотреть нарушения</a>
-    }
+        <a class="btn btn-outline-secondary" asp-action="ShowAllViolations" asp-controller="Violation">Посмотреть нарушения</a>
+
     </div>
 </div>
+
