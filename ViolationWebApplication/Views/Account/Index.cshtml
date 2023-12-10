@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ViolationWebApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ViolationWebApplication.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <button class="btn btn-outline-secondary" onclick="switchForm(this)">Вход</button>
+    <button class="btn btn-outline-secondary" onclick="switchForm(this)">Регистрация</button>
+    <div id="registration" style="display: none;">
+        @{
+            await Html.RenderPartialAsync("/Views/Account/Register.cshtml");
+        }
+    </div>
+    <div id="login" style="display: block;">
+        @{
+            await Html.RenderPartialAsync("/Views/Account/Login.cshtml");
+        }
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - ПДД
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function switchForm(button) {
+            var registrationForm = document.getElementById('registration');
+            var loginForm = document.getElementById('login');
+            if (button.innerText === 'Регистрация') {
+                registrationForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            }
+            else {
+                registrationForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

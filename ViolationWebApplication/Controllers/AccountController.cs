@@ -6,6 +6,7 @@ using ViolationWebApplication.ViewModels;
 using ViolationWebApplication.Repository;
 using ViolationWebApplication.Data;
 using ViolationWebApplication.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ViolationWebApplication.Controllers
 {
@@ -21,14 +22,10 @@ namespace ViolationWebApplication.Controllers
             _signInManager = signInManager;
             _unitOfWork = unitOfWork;
         }
-
-        [HttpGet]
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }
-
-        [HttpPost]
         public async Task<IActionResult> Login(ViewModelLogin model)
         {
             if (!ModelState.IsValid) 
@@ -56,13 +53,6 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Register(ViewModelRegister model)
         {
             if (!ModelState.IsValid) 
@@ -99,13 +89,15 @@ namespace ViolationWebApplication.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        [Authorize]
         [HttpGet]
          public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Account");
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Profile()
         {
