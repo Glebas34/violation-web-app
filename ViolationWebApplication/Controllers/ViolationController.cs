@@ -7,7 +7,7 @@ using ViolationWebApplication.Service;
 
 namespace ViolationWebApplication.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize]
     public class ViolationController : Controller
     {
         public const string SessionKeyCar = "_Car";
@@ -23,11 +23,14 @@ namespace ViolationWebApplication.Controllers
             _violationService = violationService;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddViolation()
         {
             return View();
         }
+
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> AddViolation(ViewModelViolation model) {
             if (ModelState.IsValid)
@@ -58,6 +61,7 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddCar(ViewModelCar CarModel)
         {
             if (ModelState.IsValid)
@@ -94,6 +98,7 @@ namespace ViolationWebApplication.Controllers
            return View(CarModel);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddOwner(ViewModelOwner model)
         {
             if (ModelState.IsValid)
@@ -118,11 +123,13 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "user")]
         public async Task<IActionResult> ShowAllViolations()
         {
             return View();
         }
 
+        [Authorize(Roles = "user")]
         [HttpGet]
         public async Task<IActionResult> PayFine(int id) {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);
@@ -138,6 +145,8 @@ namespace ViolationWebApplication.Controllers
             await _violationService.DeleteViolation(violation);
             return RedirectToAction("ShowAllViolations", "Violation");
         }
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteViolation(int id)
         {
             Violation violation = await _unitOfWork.ViolationRepository.Get(id);

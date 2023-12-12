@@ -53,6 +53,13 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Register(ViewModelRegister model)
         {
             if (!ModelState.IsValid) 
