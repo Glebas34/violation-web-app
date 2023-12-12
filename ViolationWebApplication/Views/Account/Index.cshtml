@@ -10,43 +10,34 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ViolationWebApplication.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="text-center">
-        <button class="btn btn-outline-secondary" onclick="switchForm(this)">Вход</button>
-        <button class="btn btn-outline-secondary" onclick="switchForm(this)">Регистрация</button>
+    <div class="login-container">
+        <h2>Вход</h2>
+            @{  await Html.RenderPartialAsync("/Views/Account/Login.cshtml");}
+        <a asp-action="Register" asp-controller="Account" class="text-black-50 fw-bold">Регистрация</a>
     </div>
-    <div id="registration" style="display: none;">
-        @{
-            await Html.RenderPartialAsync("/Views/Account/Register.cshtml");
-        }
-    </div>
-    <div id="login" style="display: block;">
-        @{
-            await Html.RenderPartialAsync("/Views/Account/Login.cshtml");
-        }
-    </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ПДД
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        function switchForm(button) {
-            var registrationForm = document.getElementById('registration');
-            var loginForm = document.getElementById('login');
-            if (button.innerText === 'Регистрация') {
-                registrationForm.style.display = 'block';
-                loginForm.style.display = 'none';
-            }
-            else {
-                registrationForm.style.display = 'none';
-                loginForm.style.display = 'block';
-            }
-        }
-    </script>
 </body>
 </html>
