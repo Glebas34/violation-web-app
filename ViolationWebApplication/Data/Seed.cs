@@ -23,7 +23,6 @@ public class Seed
     {
         using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
         {
-            //Roles
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
@@ -32,7 +31,6 @@ public class Seed
             if (!await roleManager.RoleExistsAsync(UserRole.User))
                 await roleManager.CreateAsync(new IdentityRole(UserRole.User));
 
-            //Users
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
             string adminUserEmail = "kuimov.gleb30122002@gmail.com";
 

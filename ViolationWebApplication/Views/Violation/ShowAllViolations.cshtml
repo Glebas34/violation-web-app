@@ -3,6 +3,8 @@
 @inject UserManager<AppUser> UserManager
 @inject ViolationWebApplication.Data.AppDbContext context
 @{
+    ViewData["Title"] = "Просмотр нарушений";
+
     var violations = (await UnitOfWork.ViolationRepository.GetAll()).ToList();
     await UnitOfWork.ViolationRepository.ExplicitLoadingRange(violations, "Car");
     var user = await UserManager.GetUserAsync(User);

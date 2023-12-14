@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ViolationWebApplication.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Runtime.CompilerServices;
 using ViolationWebApplication.ViewModels;
-using ViolationWebApplication.Repository;
 using ViolationWebApplication.Data;
 using ViolationWebApplication.Interfaces;
 using Microsoft.AspNetCore.Authorization;

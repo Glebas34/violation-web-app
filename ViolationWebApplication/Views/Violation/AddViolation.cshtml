@@ -9,18 +9,18 @@
 <form asp-action="AddViolation" asp-controller="Violation" method="post">
     <div class="form-group">
         <label asp-for="TypeOfViolation">Тип нарушения</label>
-        <select asp-for="TypeOfViolation" class="form-select" asp-items="Html.GetEnumSelectList<ViolationType>()" aria-label="Default select example">
+        <select asp-for="TypeOfViolation" class="form-select w-50 align-items-center" asp-items="Html.GetEnumSelectList<ViolationType>()" aria-label="Default select example">
         </select>
         <span asp-validation-for="TypeOfViolation" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="FineFee">Размер штрафа</label>
-        <input asp-for="FineFee" class="form-control" placeholder="Введите размер штрафа">
+        <input asp-for="FineFee" class="form-control w-50" placeholder="Введите размер штрафа">
         <span asp-validation-for="FineFee" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="CarNumber">Номер автомобиля</label>
-        <input asp-for="CarNumber" class="form-control" placeholder="Введите номер автомобиля">
+        <input asp-for="CarNumber" class="form-control w-50" placeholder="Введите номер автомобиля">
         <span asp-validation-for="CarNumber" class="text-danger"></span>
     </div>
     <div class="form-group">

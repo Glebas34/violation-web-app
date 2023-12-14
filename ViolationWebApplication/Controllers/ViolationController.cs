@@ -123,7 +123,7 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "user")]
+        [Authorize]
         public async Task<IActionResult> ShowAllViolations()
         {
             return View();
