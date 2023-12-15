@@ -25,10 +25,6 @@ namespace ViolationWebApplication.Repository
             ViolationRepository = violationRepository;
             CarRepository = carRepository;
         }
-        public void Load(string property)
-        {
-            
-        }
         public int Complete()
         {
             return _context.SaveChanges();

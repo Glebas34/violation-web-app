@@ -19,6 +19,10 @@
     ICollection<Car>? cars = owner.Cars;
     violations = violations.Where(v => cars.Contains(v.Car)).ToList();
 }
+else
+{
+    
+}
 @if (violations.Count > 0)
 {
     <table class="table mt-5">
@@ -29,6 +33,10 @@
                 <th scope="col">Машина</th>
                 <th scope ="col">Нарушение</th>
                 <th scope="col">Время</th>
+                @if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
+                {
+                    <th scope="col">Владелец</th>
+                }
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -38,7 +46,6 @@
             {
                 var car = violation.Car;
                 string carName = $"{car.Manufacturer} {car.Model}";
-
                 <tr>
                     <td>@violation.Id</td>
                     <td>@car.CarNumber</td>
@@ -53,8 +60,12 @@
                             </form>
                         </td>
                     }
-                    else
+                    @if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
                     {
+                    await UnitOfWork.CarRepository.ExplicitLoading(car, "Owner");
+                    var owner = car.Owner;
+                    string ownerName = owner.LastName + " " + owner.FirstName + " " + owner.Patronymic;
+                        <td>@ownerName</td>
                         <td>
                             <a class="btn btn-danger" asp-action="DeleteViolation" asp-controller="Violation" asp-route-id="@violation.Id">Удалить</a>
                         </td>
