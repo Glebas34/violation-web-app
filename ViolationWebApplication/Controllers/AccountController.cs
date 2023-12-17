@@ -24,6 +24,12 @@ namespace ViolationWebApplication.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Login(ViewModelLogin model)
         {
             if (!ModelState.IsValid) 
