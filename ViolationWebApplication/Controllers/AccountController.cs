@@ -20,10 +20,6 @@ namespace ViolationWebApplication.Controllers
             _signInManager = signInManager;
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult Login()
         {
