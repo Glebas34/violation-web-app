@@ -7,12 +7,12 @@ namespace ViolationWebApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        public string CarNumber { get; set; }
+        public string? CarNumber { get; set; }
         public string? Manufacturer {  get; set; }
         public string? Model { get; set; }
         [ForeignKey(nameof(Owner))]
         public int? OwnerId { get; set; }
         public Owner? Owner { get; set; }
-        public ICollection<Violation> Violations;
+        public ICollection<Violation>? Violations;
     }
 }
