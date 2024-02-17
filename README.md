@@ -32,7 +32,7 @@ ViolationWebApp - это Web-приложение для учёта наруше
 +	разделение пользователей по ролям(admin и user);
 +	возможность удалить любое нарушение напрямую(без оплаты) из базы данных у пользователей с ролью admin.
 
-### Структура проекта приложения
+### Структура проекта
 Для проекта был выбран шаблон MVC(Model-View-Controller).
 + Модели: AppUser.cs, Car.cs, Owner.cs, Violation.cs.
 + Контроллеры: AccountController.cs, HomeController.cs, ViolationController.cs
