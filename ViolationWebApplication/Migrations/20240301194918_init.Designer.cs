@@ -12,8 +12,8 @@ using ViolationWebApplication.Data;
 namespace ViolationWebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231112145134_identity")]
-    partial class identity
+    [Migration("20240301194918_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -235,7 +235,6 @@ namespace ViolationWebApplication.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CarNumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Manufacturer")
@@ -263,7 +262,6 @@ namespace ViolationWebApplication.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DriversLicense")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dkEfr4EESTQOc/vkumemWTvpYZN/rAuKIwUgPgZJYnuZulghtOmgVG8RScK7kiZX07CG64nwMW8GJ2JNkJlSQA==",
+  "dgSpecHash": "6GV2XZtKANSAfIxot/p6o36wL3RgKrMz6kZoctVbhS7lK8ZOezq0836AVreLmY7d9yrUR0A9PwaGQc+/fMHJ+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+  "projectFilePath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kuimo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.13\\microsoft.aspnetcore.cryptography.internal.7.0.13.nupkg.sha512",
@@ -46,7 +46,11 @@
     "C:\\Users\\kuimo\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "C:\\Users\\kuimo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\kuimo\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
-    "C:\\Users\\kuimo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "C:\\Users\\kuimo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\kuimo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.16\\microsoft.netcore.app.host.win-x64.7.0.16.nupkg.sha512"
   ],
   "logs": []
 }

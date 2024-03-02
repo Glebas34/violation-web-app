@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ViolationWebApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class identity : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,7 @@ namespace ViolationWebApplication.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DriversLicense = table.Column<string>(type: "text", nullable: false),
+                    DriversLicense = table.Column<string>(type: "text", nullable: true),
                     LastName = table.Column<string>(type: "text", nullable: true),
                     FirstName = table.Column<string>(type: "text", nullable: true),
                     Patronymic = table.Column<string>(type: "text", nullable: true)
@@ -100,7 +100,7 @@ namespace ViolationWebApplication.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CarNumber = table.Column<string>(type: "text", nullable: false),
+                    CarNumber = table.Column<string>(type: "text", nullable: true),
                     Manufacturer = table.Column<string>(type: "text", nullable: true),
                     Model = table.Column<string>(type: "text", nullable: true),
                     OwnerId = table.Column<int>(type: "integer", nullable: true)

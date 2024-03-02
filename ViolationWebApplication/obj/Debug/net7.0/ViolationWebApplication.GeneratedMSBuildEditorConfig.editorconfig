@@ -9,73 +9,75 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ViolationWebApplication
 build_property.RootNamespace = ViolationWebApplication
-build_property.ProjectDir = C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\
+build_property.ProjectDir = C:\Users\kuimo\OneDrive\Рабочий стол\Программы\violationwebapp\violationwebapplication\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication
+build_property.MSBuildProjectDirectory = C:\Users\kuimo\OneDrive\Рабочий стол\Программы\violationwebapp\violationwebapplication
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Account/Index.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Account/Login.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Account/Profile.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Account/Register.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Home/Index.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Home/Privacy.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Shared/Error.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/AddCar.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Violation/AddCar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXEFkZENhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/AddOwner.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Violation/AddOwner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXEFkZE93bmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/AddViolation.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Violation/AddViolation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXEFkZFZpb2xhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/PayFine.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Violation/PayFine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXFBheUZpbmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Violation/ShowAllViolations.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Violation/ShowAllViolations.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlvbGF0aW9uXFNob3dBbGxWaW9sYXRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/_ViewImports.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/_ViewStart.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/ViolationWebApp/ViolationWebApplication/Views/Shared/_Layout.cshtml]
+[C:/Users/kuimo/OneDrive/Рабочий стол/Программы/violationwebapp/violationwebapplication/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-u4gve2xm7p

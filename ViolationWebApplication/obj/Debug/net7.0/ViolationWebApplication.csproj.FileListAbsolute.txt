@@ -90,7 +90,6 @@ C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebA
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\scopedcss\bundle\ViolationWebApplication.styles.css
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\scopedcss\projectbundle\ViolationWebApplication.bundle.scp.css
-C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\ViolationWebApplication.csproj.CopyComplete
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\ViolationWebApplication.dll
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\refint\ViolationWebApplication.dll
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\ViolationWebApplication.pdb
@@ -470,3 +469,9 @@ C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebA
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\ViolationWebApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\refs\Microsoft.Extensions.Identity.Core.dll
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\bin\Debug\net7.0\refs\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\ViolationWebApp\ViolationWebApplication\obj\Debug\net7.0\ViolationWebApplication.sourcelink.json
+C:\Users\kuimo\OneDrive\Рабочий стол\Программы\violationwebapp\ViolationWebApplication\obj\Debug\net7.0\Violatio.58729E70.Up2Date

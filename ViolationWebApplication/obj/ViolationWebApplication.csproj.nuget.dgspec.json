@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj",
         "projectName": "ViolationWebApplication",
-        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj",
         "packagesPath": "C:\\Users\\kuimo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\obj\\",
+        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kuimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,6 +83,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.16, 7.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.16, 7.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.16, 7.0.16]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.16, 7.0.16]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -86,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

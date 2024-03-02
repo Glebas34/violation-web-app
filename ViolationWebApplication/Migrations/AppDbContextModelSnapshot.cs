@@ -232,7 +232,6 @@ namespace ViolationWebApplication.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CarNumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Manufacturer")
@@ -260,7 +259,6 @@ namespace ViolationWebApplication.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DriversLicense")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")

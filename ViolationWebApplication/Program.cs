@@ -27,11 +27,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 var app = builder.Build();
-if (args.Length == 1 && args[0].ToLower() == "seeddata")
-{
-    Seed.SeedData(app);
-    await Seed.SeedUsersAndRolesAsync(app);
-}
+
+await Seed.SeedData(app);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -40,7 +38,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseAuthentication();
