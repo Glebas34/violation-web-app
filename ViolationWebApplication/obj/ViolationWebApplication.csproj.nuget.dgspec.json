@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj": {}
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj": {
+    "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
         "projectName": "ViolationWebApplication",
-        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\ViolationWebApplication.csproj",
+        "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
         "packagesPath": "C:\\Users\\kuimo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violationwebapp\\violationwebapplication\\obj\\",
+        "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kuimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -62,6 +57,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.19.5, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
