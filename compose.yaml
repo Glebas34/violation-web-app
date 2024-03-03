@@ -8,8 +8,12 @@ services:
   server:
     image: docker.io/library/violationwebapp
     container_name: violationwebapp_services
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=80
     ports:
-      - 80:80
+      - 8080:80
     build:
       context: .
       dockerfile: Dockerfile
