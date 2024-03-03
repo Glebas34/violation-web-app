@@ -20,11 +20,11 @@ services:
     networks:
       - dev
     depends_on:
-      - violationwebapp.db
+      - violationwebapp-db
 
-  violationwebapp.db:
+  violationwebapp-db:
     image: postgres:latest
-    container_name: violationwebapp.db
+    container_name: violationwebapp-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
