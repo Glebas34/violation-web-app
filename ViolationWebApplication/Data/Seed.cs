@@ -8,8 +8,6 @@ public class Seed
     {
         using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
         {
-            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-            context.Database.EnsureCreated();
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             if (!await roleManager.RoleExistsAsync(UserRole.Admin))
