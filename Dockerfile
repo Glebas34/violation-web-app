@@ -8,8 +8,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["ViolationWebApplication/ViolationWebApplication.csproj", "ViolationWebApplication/"]
 RUN dotnet restore "./ViolationWebApplication/./ViolationWebApplication.csproj"
-COPY . .
 WORKDIR "/src/ViolationWebApplication"
+COPY /ViolationWebApplication .
 RUN dotnet build "./ViolationWebApplication.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
