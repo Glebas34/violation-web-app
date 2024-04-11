@@ -2064,11 +2064,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violation-web-app\\ViolationWebApplication\\ViolationWebApplication.csproj",
       "projectName": "ViolationWebApplication",
-      "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\ViolationWebApplication.csproj",
+      "projectPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violation-web-app\\ViolationWebApplication\\ViolationWebApplication.csproj",
       "packagesPath": "C:\\Users\\kuimo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\ViolationWebApp\\ViolationWebApplication\\obj\\",
+      "outputPath": "C:\\Users\\kuimo\\OneDrive\\Рабочий стол\\Программы\\violation-web-app\\ViolationWebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kuimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2091,6 +2091,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
