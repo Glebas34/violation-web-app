@@ -1,24 +1,9 @@
-﻿@model ViolationWebApplication.ViewModels.ViewModelRegister;
+@model ViolationWebApplication.ViewModels.ViewModelAdmin;
 
-@{
-    ViewData["Title"] = "Регистрация";
-    Layout = null;
-}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ViolationWebApplication</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ViolationWebApplication.styles.css" asp-append-version="true" />
-</head>
-<body>
 <div class="row">
     <div class="col-md-6 offset-3">
         <p>
-            <h4>Регистрация</h4>
+            <h4>Добавление админа</h4>
         </p>
         @if (TempData["Error"] != null)
         {
@@ -28,13 +13,8 @@
         }
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Register" asp-controller="Account">
+                <form asp-action="AddAdmin" asp-controller="Account">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Passport" class="control-label"></label>
-                        <input asp-for="Passport" class="form-control">
-                        <span asp-validation-for="Passport" class="text-danger"></span>
-                    </div>
                     <div class="form-group">
                         <label asp-for="LastName" class="control-label"></label>
                         <input asp-for="LastName" class="form-control">
@@ -66,18 +46,11 @@
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-outline-success float right" type="submit" value="Зарегистрироваться" />
-                        <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Login">Назад</a>
+                        <input class="btn btn-outline-success float right" type="submit" value="Добавить" />
+                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Назад</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script>
-    $("input[asp-for=Passport]").mask('9999 999999');
-</script>
-</html>

@@ -10,10 +10,12 @@ public class Seed
         {
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
             context.Database.EnsureCreated();
+            
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             if (!await roleManager.RoleExistsAsync(UserRole.Admin))
                 await roleManager.CreateAsync(new IdentityRole(UserRole.Admin));
+
             if (!await roleManager.RoleExistsAsync(UserRole.User))
                 await roleManager.CreateAsync(new IdentityRole(UserRole.User));
 
@@ -25,11 +27,15 @@ public class Seed
             {
                 var newAdminUser = new AppUser()
                 {
-                    UserName = "Admin",
+                    UserName = "admin",
                     Email = adminUserEmail,
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    FullName = "Александров Александр Александрович"
                 };
+                newAdminUser.UserName=$"admin_{newAdminUser.Id}";
+
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+
                 await userManager.AddToRoleAsync(newAdminUser, UserRole.Admin);
             }
         }

@@ -1,22 +1,20 @@
-﻿@{
-    ViewData["Title"] = "Оплата штрафа";
-}
-    <style>
-        .card {
-            width: 300px;
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+﻿@{ViewData["Title"] = "Оплата штрафа";}
+<style>
+    .card {
+        width: 300px;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
 <body>
     <div class="container mt-6"> 
         <div class="row justify-content-center"> 
             <div class="col-12 col-md-6"> 
                 <div class="card"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form mehthod="post" asp-action="Delete" asp-controller="Violation" asp-route-id="@ViewData["CarId"]"> 
                             <div class="form-group"> 
                                 <label for="cardNumber">Номер карты</label> 
                                 <input type="text" class="form-control" name="card-number" placeholder="Введите номер карты"> 
@@ -38,6 +36,7 @@
                             <button type="submit" class="btn btn-primary btn-block">Оплатить</button> 
                         </form>
                     </div>
+                    <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Вернуться на главную</a>
                 </div> 
             </div> 
         </div> 

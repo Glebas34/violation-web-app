@@ -3,7 +3,6 @@
 
 @{
 	var user = await UserManager.GetUserAsync(User);
-	var owner = await UnitOfWork.OwnerRepository.Get(user.OwnerId);
 }
 
 <style>
@@ -46,12 +45,7 @@
     <div class="user-details">
         <p>Имя пользователя: @user.UserName</p>
         <p>Электронная почта: @user.Email</p>
-
-        @if ((await UserManager.GetRolesAsync(user)).Contains("user"))
-        {
-            <p>ФИО: @owner.LastName @owner.FirstName @owner.Patronymic</p>
-            <p>Номер водительских прав: @owner.DriversLicense</p>
-        }
+        <p>ФИО: @user.FullName</p>
     </div>
 </div>
 

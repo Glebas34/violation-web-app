@@ -1,0 +1,40 @@
+@using ViolationWebApplication.ViewModels;
+@using ViolationWebApplication.Data;
+
+@model ViolationWebApplication.ViewModels.ViewModelViolation;
+
+@{ViewData["Title"] = "Редактирование нарушения";}
+
+<form asp-action="Update" asp-controller="Violation" method="post">
+    <div class="form-group">
+        <label asp-for="TypeOfViolation">Вид нарушения</label>
+        <select asp-for="TypeOfViolation" class="form-select w-50 align-items-center" aria-label="Default select example">
+        @foreach(var type in Enum.GetValues(typeof(ViolationType)))
+        {
+            if((int)type==(int)Enum.Parse(typeof(ViolationType), $"{Model.TypeOfViolation}"))
+            {
+                <option selected="selected">@type</option>
+            }
+            else
+            {
+                <option>@type</option>
+            }
+        }
+        </select>
+        <span asp-validation-for="TypeOfViolation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FineFee">Размер штрафа</label>
+        <input asp-for="FineFee" class="form-control w-50" placeholder="Введите размер штрафа" value="@Model.FineFee">
+        <span asp-validation-for="FineFee" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CarNumber">Номер автомобиля</label>
+        <input asp-for="CarNumber" class="form-control w-50" placeholder="Введите номер автомобиля" value="@Model.CarNumber">
+        <span asp-validation-for="CarNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Отменить</a>
+    </div>
+</form>

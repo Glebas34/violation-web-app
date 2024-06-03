@@ -17,9 +17,12 @@
 
         @if ((await UserManager.GetRolesAsync(user)).Contains("admin"))
         {
-            <a class="btn btn-outline-secondary" asp-action="AddViolation" asp-controller="Violation">Добавить нарушение</a>
+            <a class="btn btn-outline-secondary" asp-action="Add" asp-controller="Violation">Добавить нарушение</a>
+            <a class="btn btn-outline-secondary" asp-action="Add" asp-controller="Car">Добавить автомобиль</a>
+            <a class="btn btn-outline-secondary" asp-action="AddAdmin" asp-controller="Account">Добавить админа</a>
         }
-        <a class="btn btn-outline-secondary" asp-action="ShowAllViolations" asp-controller="Violation">Посмотреть нарушения</a>
+        <a class="btn btn-outline-secondary" asp-action="ShowAll" asp-controller="Violation">Посмотреть нарушения</a>
+        <a class="btn btn-outline-secondary" asp-action="ShowAll" asp-controller="Car">Посмотреть автомобили</a>
 
     </div>
 </div>

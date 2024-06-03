@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+
 namespace ViolationWebApplication.ViewModels
 {
-    public class ViewModelRegister
+    public class ViewModelAdmin
     {
-        [Display(Name = "Номер паспорта")]
-        [Required(ErrorMessage = "Введите номер паспорта")]
-        [RegularExpression(@"[0-9]{10}")]
-        public string Passport { get; set; }
-
         [Display(Name = "Фамилия")]
         //[RegularExpression(@"[А-Яа-яёЁ]", ErrorMessage = "Фамилия может содержать буквы русского алфавита")]
         [Required(ErrorMessage = "Введите фамилию")]
@@ -38,6 +34,5 @@ namespace ViolationWebApplication.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage = "Несовпадение паролей")]
         public string ConfirmPassword { get; set; }
-
     }
 }

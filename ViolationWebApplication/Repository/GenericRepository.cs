@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using ViolationWebApplication.Interfaces;
 using ViolationWebApplication.Data;
 
@@ -12,10 +6,11 @@ namespace ViolationWebApplication.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         protected DbSet<T> _dbSet;
 
-        public GenericRepository(AppDbContext context) {
+        public GenericRepository(AppDbContext context) 
+        {
             _context = context;
             _dbSet=context.Set<T>();
         }
@@ -36,9 +31,10 @@ namespace ViolationWebApplication.Repository
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T> Get(int? id)
+        public async Task<T> Get(int id)
         {
             var entity = await _dbSet.FindAsync(id);
+
             return entity;
         }
 
@@ -65,7 +61,8 @@ namespace ViolationWebApplication.Repository
 
         public async Task ExplicitLoadingRange(IEnumerable<T> entities, string property)
         {
-            foreach(var entity in entities) {
+            foreach(var entity in entities) 
+            {
                 await _context.Entry(entity).Reference(property).LoadAsync(); 
             }
         }

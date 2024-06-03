@@ -8,7 +8,6 @@ namespace ViolationWebApplication.Interfaces
 {
     public interface IUnitOfWork: IDisposable
     {
-        IOwnerRepository OwnerRepository { get; }
         IViolationRepository ViolationRepository { get; }
         ICarRepository CarRepository { get; }
         int Complete();

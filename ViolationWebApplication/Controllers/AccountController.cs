@@ -5,6 +5,7 @@ using ViolationWebApplication.ViewModels;
 using ViolationWebApplication.Data;
 using ViolationWebApplication.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using ViolationWebApplication.Service;
 
 namespace ViolationWebApplication.Controllers
 {
@@ -20,36 +21,37 @@ namespace ViolationWebApplication.Controllers
             _signInManager = signInManager;
             _unitOfWork = unitOfWork;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+        
         [HttpPost]
         public async Task<IActionResult> Login(ViewModelLogin model)
         {
-            if (!ModelState.IsValid) 
+            if (ModelState.IsValid) 
             {
-                return View(model);
-            }
+                var user = await _userManager.FindByEmailAsync(model.Email);
 
-            var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                { 
+                    var passwordCheck = await _userManager.CheckPasswordAsync(user, model.Password);
 
-            if (user != null)
-            { 
-             var passwordCheck = await _userManager.CheckPasswordAsync(user, model.Password);
-                if (passwordCheck)
-                {
-                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-                    if (result.Succeeded) 
+                    if (passwordCheck)
                     {
-                        return RedirectToAction("Index","Home");
+                        var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+                        if (result.Succeeded) 
+                        {
+                            return RedirectToAction("Index","Home");
+                        }
                     }
                 }
-                TempData["Error"] = "Неверные реквизиты. Попробуйте снова.";
-                return View(model);
             }
+
             TempData["Error"] = "Неверные реквизиты. Попробуйте снова.";
+
             return View(model);
         }
 
@@ -66,41 +68,54 @@ namespace ViolationWebApplication.Controllers
             {
                 return View(model);
             }
+
             var user = await _userManager.FindByEmailAsync(model.Email);
+
             if (user != null) 
             {
                 TempData["Error"] = "Email занят.";
                 return View(model);
             }
-            user = await _userManager.FindByNameAsync(model.UserName);
+
+            user = await _userManager.FindByPassportAsync(model.Passport);
+
             if (user != null)
             {
-                TempData["Error"] = "Имя пользователя занято.";
+                TempData["Error"] = "Пользователь с таким паспортом уже зарегистрирован.";
                 return View(model);
             }
-            var owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(model.DriversLicense);
-            if (owner == null)
-            {
-                var newOwner = new Owner { FirstName = model.FirstName, LastName = model.LastName, Patronymic = model.Patronymic, DriversLicense = model.DriversLicense};
-                owner = newOwner;
-                await _unitOfWork.OwnerRepository.Add(owner);
-            }
-            var newUser = new AppUser { UserName = model.UserName, Email = model.Email, OwnerId = owner.Id, Owner = owner};
+
+            var newUser = new AppUser {Email = model.Email, FullName = $"{model.LastName} {model.FirstName} {model.Patronymic}", Passport = model.Passport};
+            newUser.UserName = $"user_{newUser.Id}";
+
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
+
             if (newUserResponse.Succeeded) 
             {
-                await _userManager.AddToRoleAsync(newUser, UserRole.User);
+                var cars = (await _unitOfWork.CarRepository.GetAll()).Where(c => c.OwnerPassport==model.Passport).ToList();
+                
+                foreach(var car in cars)
+                {
+                    car.UserId = newUser.Id;
+                    car.AppUser = newUser;
+                    _unitOfWork.CarRepository.Update(car);
+                }
+
                 _unitOfWork.Complete();
+
+                await _userManager.AddToRoleAsync(newUser, UserRole.User);
                 await _signInManager.SignInAsync(newUser, isPersistent: false);
             }
+
             return RedirectToAction("Index","Home");
         }
 
         [Authorize]
         [HttpGet]
-         public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+
             return RedirectToAction("Login", "Account");
         }
 
@@ -109,6 +124,43 @@ namespace ViolationWebApplication.Controllers
         public IActionResult Profile()
         {
             return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<IActionResult> AddAdmin(ViewModelAdmin model)
+        {
+            if (!ModelState.IsValid) 
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user != null) 
+            {
+                TempData["Error"] = "Email занят.";
+
+                return View(model);
+            }
+
+            var newUser = new AppUser {Email = model.Email, FullName = $"{model.LastName} {model.FirstName} {model.Patronymic}"};
+            newUser.UserName = $"admin_{newUser.Id}";
+            var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
+
+            if (newUserResponse.Succeeded) 
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRole.Admin);
+            }
+
+            return RedirectToAction("Index","Home");
         }
     }
 }

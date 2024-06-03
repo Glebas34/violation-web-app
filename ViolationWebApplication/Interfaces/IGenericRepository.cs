@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ViolationWebApplication.Interfaces
+﻿namespace ViolationWebApplication.Interfaces
 {
-   public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
-        Task<T> Get(int? id);
+        Task<T> Get(int id);
         Task<IList<T>> GetAll();
         Task Add(T entity);
         Task Delete(int id);

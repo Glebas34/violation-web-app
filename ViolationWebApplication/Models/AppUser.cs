@@ -6,9 +6,8 @@ namespace ViolationWebApplication.Models
 {
     public class AppUser : IdentityUser
     {
-        [ForeignKey(nameof(Owner))]
-        public int? OwnerId { get; set; }
-        public Owner? Owner { get; set; }
-
+        public string? Passport { get; set; }
+        public string FullName { get; set; }
+        public ICollection<Car>? Cars{ get; set; }
     }
 }

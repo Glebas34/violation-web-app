@@ -17,7 +17,7 @@ namespace ViolationWebApplication.Repository
 
         }
 
-        async Task<Car> ICarRepository.GetByNumber(string? numberOfCar)
+        async Task<Car> ICarRepository.GetByNumber(string numberOfCar)
         {
             return await _dbSet.FirstOrDefaultAsync(e => e.CarNumber == numberOfCar);
         }

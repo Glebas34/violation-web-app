@@ -1,0 +1,35 @@
+@using ViolationWebApplication.ViewModels;
+@model ViolationWebApplication.ViewModels.ViewModelCar;
+@{ViewData["Title"] = "Редактирование автомобиля";}
+
+<form asp-action="Update" asp-controller="Car" method="post">
+    <div class="form-group">
+        <label asp-for="CarNumber">Номер автомобиля</label>
+        <input asp-for="CarNumber" class="form-control w-50" placeholder="Введите номер автомобиля" value="@Model.CarNumber">
+        <span asp-validation-for="CarNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Manufacturer">Производитель</label>
+        <input asp-for="Manufacturer" class="form-control w-50" placeholder="Введите производителя" value="@Model.Manufacturer">
+        <span asp-validation-for="Manufacturer" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Модель</label>
+        <input asp-for="Model" class="form-control w-50" placeholder="Введите модель" value="@Model.Model">
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Passport">Номер паспорта владельца</label>
+        <input asp-for="Passport" class="form-control w-50" placeholder="Введите номер водительских прав" value="@Model.Passport">
+        <span asp-validation-for="Passport" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FullName">ФИО владельца</label>
+        <input asp-for="FullName" class="form-control w-50" placeholder="Введите ФИО владельца" value="@Model.FullName">
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index" asp-route-id="@Model.Id">Отменить</a>
+    </div>
+</form>

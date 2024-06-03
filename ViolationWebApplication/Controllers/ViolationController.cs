@@ -10,148 +10,130 @@ namespace ViolationWebApplication.Controllers
     [Authorize]
     public class ViolationController : Controller
     {
-        public const string SessionKeyCar = "_Car";
-        public const string SessionKeyOwner = "_Owner";
         public const string SessionKeyViolation = "_Violation";
         private IUnitOfWork _unitOfWork { get; set; }
         private ISession _session { get; set; }
-        private IViolationService _violationService { get; set; }
 
-        public ViolationController(IUnitOfWork unitOfWork,IHttpContextAccessor httpContextAccessor, IViolationService violationService) {
+        public ViolationController(IUnitOfWork unitOfWork,IHttpContextAccessor httpContextAccessor)
+        {
             _unitOfWork = unitOfWork;
             _session = httpContextAccessor.HttpContext.Session;
-            _violationService = violationService;
         }
 
         [Authorize(Roles = "admin")]
         [HttpGet]
-        public IActionResult AddViolation()
+        public IActionResult Add()
         {
             return View();
         }
 
         [Authorize(Roles = "admin")]
         [HttpPost]
-        public async Task<IActionResult> AddViolation(ViewModelViolation model) {
+        public async Task<IActionResult> Add(ViewModelViolation model) 
+        {
             if (ModelState.IsValid)
             {
-                Violation violation = new Violation();
+                var violation = new Violation
+                {
+                    TypeOfViolation = model.TypeOfViolation,
+                    FineFee = model.FineFee
+                };
 
-                violation.TypeOfViolation = model.TypeOfViolation;
-                violation.FineFee = model.FineFee;
+                var car = await _unitOfWork.CarRepository.GetByNumber(model.CarNumber);
 
-                Car? car = await _unitOfWork.CarRepository.GetByNumber(model.CarNumber);
-                if (car != null)
+                if(car != null)
                 {
                     violation.Car = car;
                     violation.CarId = car.Id;
+
                     await _unitOfWork.ViolationRepository.Add(violation);
                     _unitOfWork.Complete();
+
                     return RedirectToAction("Index","Home");
                 }
-                car = new Car();
 
-                car.CarNumber = model.CarNumber;
-
-                _session.Set(SessionKeyCar, car);
-                _session.Set(SessionKeyViolation, violation);
-
-                return View("AddCar");
+                TempData["Error"] = "Автомобиля с таким номеров не существует";
             }
-            return View(model);
-        }
 
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> AddCar(ViewModelCar CarModel)
-        {
-            if (ModelState.IsValid)
-            {
-                Car car = _session.Get<Car>(SessionKeyCar);
-
-                car.Manufacturer = CarModel.Manufacturer;
-                car.Model = CarModel.Model;
-
-                Owner? owner = await _unitOfWork.OwnerRepository.GetByDriversLicense(CarModel.DriversLicense);
-                if (owner != null)
-                {
-                    Violation violation = _session.Get<Violation>(SessionKeyViolation);
-                    car.OwnerId = owner.Id;
-                    car.Owner = owner;
-                    violation.Car = car;
-
-                    await _unitOfWork.ViolationRepository.Add(violation);
-                    await _unitOfWork.CarRepository.Add(car);
-                    _unitOfWork.Complete();
-
-                    return RedirectToAction("Index", "Home");
-                }
-                owner = new Owner();
-
-                owner.DriversLicense = CarModel.DriversLicense;
-                car.OwnerId = owner.Id;
-
-                _session.Set(SessionKeyCar, car);
-                _session.Set(SessionKeyOwner, owner);
-
-                return View("AddOwner");
-            }
-           return View(CarModel);
-        }
-
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> AddOwner(ViewModelOwner model)
-        {
-            if (ModelState.IsValid)
-            {
-                Owner owner = _session.Get<Owner>(SessionKeyOwner);
-                Car car = _session.Get<Car>(SessionKeyCar);
-                Violation violation = _session.Get<Violation>(SessionKeyViolation);
-
-                owner.LastName = model.LastName;
-                owner.FirstName = model.FirstName;
-                owner.Patronymic = model.Patronymic;
-                car.Owner = owner;
-                violation.Car = car;
-
-                await _unitOfWork.ViolationRepository.Add(violation);
-                await _unitOfWork.CarRepository.Add(car);
-                await _unitOfWork.OwnerRepository.Add(owner);
-                _unitOfWork.Complete();
-
-                return RedirectToAction("Index", "Home");
-            }
             return View(model);
         }
 
         [Authorize]
-        public async Task<IActionResult> ShowAllViolations()
+        public IActionResult ShowAll()
         {
+            TempData["Error"] = null;
+
             return View();
         }
 
         [Authorize(Roles = "user")]
         [HttpGet]
-        public async Task<IActionResult> PayFine(int id) {
-            Violation violation = await _unitOfWork.ViolationRepository.Get(id);
-            _session.Set(SessionKeyViolation, violation);
+        public async Task<IActionResult> PayFine(int id) 
+        {
+            ViewData["CarId"]=id;
+
             return View();
         }
 
-        [Authorize(Roles = "user")]
         [HttpPost]
-        public async Task<IActionResult> PayFine()
+        public async Task<IActionResult> Delete(int id)
         {
-            Violation violation = _session.Get<Violation>(SessionKeyViolation);
-            await _violationService.DeleteViolation(violation);
-            return RedirectToAction("ShowAllViolations", "Violation");
+            await _unitOfWork.ViolationRepository.Delete(id);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("ShowAll", "Violation");
         }
 
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> DeleteViolation(int id)
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
         {
-            Violation violation = await _unitOfWork.ViolationRepository.Get(id);
-            await _violationService.DeleteViolation(violation);
-            return RedirectToAction("ShowAllViolations", "Violation");
+            var violation = await _unitOfWork.ViolationRepository.Get(id);
+
+            await _unitOfWork.ViolationRepository.ExplicitLoading(violation, "Car");
+            _session.Set<Violation>(SessionKeyViolation, violation);
+            
+            var car = violation.Car;
+
+            var vm = new ViewModelViolation
+            {
+                TypeOfViolation = violation.TypeOfViolation,
+                CarNumber = car.CarNumber,
+                FineFee = violation.FineFee
+            };
+
+            return View("Update",vm);
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<IActionResult> Update(ViewModelViolation model)
+        {
+            if(ModelState.IsValid)
+            {
+                var car = await _unitOfWork.CarRepository.GetByNumber(model.CarNumber);
+
+                if(car is null)
+                {
+                    TempData["Error"] = "Автомобиля с таким номеров не существует";
+
+                    return View(model);
+                }
+
+                var violation = _session.Get<Violation>(SessionKeyViolation);
+
+                violation.TypeOfViolation = model.TypeOfViolation;
+                violation.FineFee = model.FineFee;
+                violation.CarId = car.Id;
+                violation.Car = car;
+
+                _unitOfWork.ViolationRepository.Update(violation);
+                _unitOfWork.Complete();
+
+                return RedirectToAction("ShowAll", "Violation");
+            }
+
+            return View(model);
         }
     }
 }

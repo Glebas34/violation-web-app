@@ -5,7 +5,6 @@ using ViolationWebApplication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ViolationWebApplication.Data;
-using ViolationWebApplication.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +16,11 @@ builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddTransient<IViolationRepository, ViolationRepository>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
-builder.Services.AddTransient<IOwnerRepository, OwnerRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddTransient<IViolationService, ViolationService>();
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
-builder.Services.AddIdentity<AppUser, IdentityRole>(options => 
-{ options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_1234567890"; })
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
