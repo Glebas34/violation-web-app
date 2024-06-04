@@ -30,8 +30,8 @@ ViolationWebApp - это Web-приложение для учёта наруше
 
 ### Структура проекта
 Для проекта был выбран шаблон MVC(Model-View-Controller).
-+ Модели: AppUser.cs, Car.cs, Owner.cs, Violation.cs.
-+ Контроллеры: AccountController.cs, HomeController.cs, ViolationController.cs
++ Модели: AppUser.cs, Car.cs, Violation.cs.
++ Контроллеры: AccountController.cs, HomeController.cs, ViolationController.cs, CarController.cs.
 + Представления: в папке ViolationWebApplication/Views хранятся представления для контроллеров.
 
 Классы в папке ViolationWebApplication/Repository и AppDbContext нужны для работы с базой данных.
