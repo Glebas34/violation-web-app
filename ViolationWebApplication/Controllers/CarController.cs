@@ -21,6 +21,7 @@ namespace ViolationWebApplication.Controllers
 
         }
 
+        //Метод для отображения страницы Car/Add(Добавление автомобиля)
         [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Add()
@@ -28,6 +29,7 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для обработки введённых данных на странице Car/Add(Добавление автомобиля)
         [HttpPost]
         public async Task<IActionResult> Add(ViewModelCar carModel)
         {
@@ -60,13 +62,14 @@ namespace ViolationWebApplication.Controllers
                 }
 
                 await _unitOfWork.CarRepository.Add(car);
-                _unitOfWork.Complete();
+                await _unitOfWork.Complete();
 
                 return RedirectToAction("Index","Home");
             }
             return View();
         }
 
+        //Метод для отображения страницы Car/Update(Редактирование данные об автомобиле)
         [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -86,6 +89,7 @@ namespace ViolationWebApplication.Controllers
             return View(vm);
         }
 
+        //Метод для обработки введённых данных на странице Car/Update/{id}(Редактирование данные об автомобиле)
         [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Update(ViewModelCar carModel)
@@ -110,7 +114,7 @@ namespace ViolationWebApplication.Controllers
                 car.OwnerPassport = carModel.Passport;
 
                 _unitOfWork.CarRepository.Update(car);
-                _unitOfWork.Complete();
+                await _unitOfWork.Complete();
 
                 return RedirectToAction("ShowAll", "Car");
             }
@@ -118,6 +122,7 @@ namespace ViolationWebApplication.Controllers
             return View(carModel);
         }
 
+        //Метод для отображения страницы Car/ShowAll(Вывод данных об автомобилях)
         [HttpGet]
         public IActionResult ShowAll()
         {
@@ -126,12 +131,13 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для удаления автомобиля
         [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             await _unitOfWork.CarRepository.Delete(id);
-            _unitOfWork.Complete();
+            await _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Home");
         }

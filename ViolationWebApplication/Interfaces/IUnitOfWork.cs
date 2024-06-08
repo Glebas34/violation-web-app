@@ -10,6 +10,6 @@ namespace ViolationWebApplication.Interfaces
     {
         IViolationRepository ViolationRepository { get; }
         ICarRepository CarRepository { get; }
-        int Complete();
+        Task<int> Complete();
     }
 }

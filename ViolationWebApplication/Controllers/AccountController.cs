@@ -22,12 +22,14 @@ namespace ViolationWebApplication.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        //Метод для отображения страницы Account/Login(Войти)
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
         
+        //Метод для обработки введённых данных на странице Account/Login(Войти)
         [HttpPost]
         public async Task<IActionResult> Login(ViewModelLogin model)
         {
@@ -55,12 +57,14 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
+        //Метод для отображения страницы Account/Register(Регистрация)
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        //Метод для обработки введённых данных на странице Account/Register(Регистрация)
         [HttpPost]
         public async Task<IActionResult> Register(ViewModelRegister model)
         {
@@ -101,7 +105,7 @@ namespace ViolationWebApplication.Controllers
                     _unitOfWork.CarRepository.Update(car);
                 }
 
-                _unitOfWork.Complete();
+                await _unitOfWork.Complete();
 
                 await _userManager.AddToRoleAsync(newUser, UserRole.User);
                 await _signInManager.SignInAsync(newUser, isPersistent: false);
@@ -110,6 +114,7 @@ namespace ViolationWebApplication.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        //Метод для обработки выхода из аккаунта
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Logout()
@@ -119,6 +124,7 @@ namespace ViolationWebApplication.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        //Метод для отображения страницы Account/Profile(Профиль)
         [Authorize]
         [HttpGet]
         public IActionResult Profile()
@@ -126,6 +132,7 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для отображения страницы Account/AddAdmin(Добавить админа)
         [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddAdmin()
@@ -133,6 +140,7 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для обработки введённых данных на странице Account/AddAdmin
         [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> AddAdmin(ViewModelAdmin model)

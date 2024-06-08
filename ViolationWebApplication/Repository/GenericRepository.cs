@@ -45,8 +45,7 @@ namespace ViolationWebApplication.Repository
 
         public void Update(T entity)
         {
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Update(entity);
         }
 
         public async Task ExplicitLoading(T entity, string property)

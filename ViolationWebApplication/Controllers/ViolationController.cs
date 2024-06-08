@@ -20,6 +20,7 @@ namespace ViolationWebApplication.Controllers
             _session = httpContextAccessor.HttpContext.Session;
         }
 
+        //Метод для отображения страницы Violation/Add(Добавление добавление нарушения)
         [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Add()
@@ -27,6 +28,7 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для обработки введённых данных на странице Violation/Add(Добавление нарушения)
         [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Add(ViewModelViolation model) 
@@ -47,7 +49,7 @@ namespace ViolationWebApplication.Controllers
                     violation.CarId = car.Id;
 
                     await _unitOfWork.ViolationRepository.Add(violation);
-                    _unitOfWork.Complete();
+                    await _unitOfWork.Complete();
 
                     return RedirectToAction("Index","Home");
                 }
@@ -58,6 +60,7 @@ namespace ViolationWebApplication.Controllers
             return View(model);
         }
 
+        //Метод для отображения страницы Violation/ShowAll(Вывод данных о нарушениях)
         [Authorize]
         public IActionResult ShowAll()
         {
@@ -66,24 +69,27 @@ namespace ViolationWebApplication.Controllers
             return View();
         }
 
+        //Метод для отображения страницы Violation/PayFine/{id}(Оплата штрафа)
         [Authorize(Roles = "user")]
         [HttpGet]
-        public async Task<IActionResult> PayFine(int id) 
+        public IActionResult PayFine(int id) 
         {
             ViewData["CarId"]=id;
 
             return View();
         }
 
+        //Метод для удаления нарушения
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             await _unitOfWork.ViolationRepository.Delete(id);
-            _unitOfWork.Complete();
+            await _unitOfWork.Complete();
 
             return RedirectToAction("ShowAll", "Violation");
         }
 
+        //Метод для отображения страницы Violation/Update/{id}(Редактирование данных о нарушении)
         [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -102,9 +108,10 @@ namespace ViolationWebApplication.Controllers
                 FineFee = violation.FineFee
             };
 
-            return View("Update",vm);
+            return View(vm);
         }
 
+        //Метод для обработки введённых данных на странице Violation/Update/{id}(Редактирование данных о нарушении)
         [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Update(ViewModelViolation model)
@@ -128,7 +135,7 @@ namespace ViolationWebApplication.Controllers
                 violation.Car = car;
 
                 _unitOfWork.ViolationRepository.Update(violation);
-                _unitOfWork.Complete();
+                await _unitOfWork.Complete();
 
                 return RedirectToAction("ShowAll", "Violation");
             }
