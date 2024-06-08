@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ViolationWebApplication.Data
 {
+    //Класс для работы с базой данных
     public class AppDbContext : IdentityDbContext<AppUser>
     {
 

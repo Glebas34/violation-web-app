@@ -8,6 +8,7 @@ using ViolationWebApplication.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Добавление сервисов
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
@@ -25,8 +26,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var app = builder.Build();
 
+//Заполнение базы данных начальными данными
 await Seed.SeedData(app);
 
+//HTTP pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
